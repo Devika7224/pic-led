@@ -1,0 +1,2 @@
+build/default/debug/MATRIXWITHOUTCLEAR.p1:  \
+MATRIXWITHOUTCLEAR.c 

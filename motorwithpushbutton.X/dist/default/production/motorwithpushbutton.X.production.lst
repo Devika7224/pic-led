@@ -1,0 +1,398 @@
+
+
+Microchip MPLAB XC8 Assembler V2.46 build 20240104201356 
+                                                                                               Thu Aug 01 10:19:59 2024
+
+Microchip MPLAB XC8 C Compiler v2.46 (Free license) build 20240104201356 Og1 
+     1                           	processor	18F4580
+     2                           	fnconf	rparam,??,?,0
+     3                           	pagewidth 120
+     4                           	opt	flic
+     5                           	psect	cinit,global,reloc=2,class=CODE,delta=1
+     6                           	psect	cstackCOMRAM,global,class=COMRAM,space=1,delta=1,lowdata,noexec
+     7                           	psect	text0,global,reloc=2,class=CODE,delta=1
+     8                           	psect	smallconst,global,reloc=2,class=SMALLCONST,delta=1,noexec
+     9                           	psect	intsave_regs,global,class=BIGRAM,space=1,delta=1,noexec
+    10                           	psect	rparam,global,class=COMRAM,space=1,delta=1,noexec
+    11   000000                     
+    12                           ; Generated 17/10/2023 GMT
+    13                           ; 
+    14                           ; Copyright © 2023, Microchip Technology Inc. and its subsidiaries ("Microchip")
+    15                           ; All rights reserved.
+    16                           ; 
+    17                           ; This software is developed by Microchip Technology Inc. and its subsidiaries ("Microch
+      +                          ip").
+    18                           ; 
+    19                           ; Redistribution and use in source and binary forms, with or without modification, are
+    20                           ; permitted provided that the following conditions are met:
+    21                           ; 
+    22                           ;     1. Redistributions of source code must retain the above copyright notice, this lis
+      +                          t of
+    23                           ;        conditions and the following disclaimer.
+    24                           ; 
+    25                           ;     2. Redistributions in binary form must reproduce the above copyright notice, this 
+      +                          list
+    26                           ;        of conditions and the following disclaimer in the documentation and/or other
+    27                           ;        materials provided with the distribution. Publication is not required when
+    28                           ;        this file is used in an embedded application.
+    29                           ; 
+    30                           ;     3. Microchip's name may not be used to endorse or promote products derived from th
+      +                          is
+    31                           ;        software without specific prior written permission.
+    32                           ; 
+    33                           ; THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+    34                           ; INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS F
+      +                          OR
+    35                           ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL MICROCHIP BE LIABLE FOR ANY DIRECT, INDIREC
+      +                          T,
+    36                           ; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
+    37                           ; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
+    38                           ; INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, ST
+      +                          RICT
+    39                           ; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE U
+      +                          SE OF
+    40                           ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+    41                           ; 
+    42                           ; 
+    43                           ; Code-generator required, PIC18F4580 Definitions
+    44                           ; 
+    45                           ; SFR Addresses
+    46   000000                     _TRISC	set	3988
+    47   000000                     _RC0	set	31760
+    48   000000                     _TRISD	set	3989
+    49   000000                     _PORTD	set	3971
+    50                           
+    51                           ; #config settings
+    52                           
+    53                           	psect	cinit
+    54   00069E                     __pcinit:
+    55                           	callstack 0
+    56   00069E                     start_initialization:
+    57                           	callstack 0
+    58   00069E                     __initialization:
+    59                           	callstack 0
+    60   00069E                     end_of_initialization:
+    61                           	callstack 0
+    62   00069E                     __end_of__initialization:
+    63                           	callstack 0
+    64   00069E  0100               	movlb	0
+    65   0006A0  EF01  F003         	goto	_main	;jump to C main() function
+    66                           
+    67                           	psect	cstackCOMRAM
+    68   000001                     __pcstackCOMRAM:
+    69                           	callstack 0
+    70   000001                     main@count:
+    71                           	callstack 0
+    72                           
+    73                           ; 2 bytes @ 0x0
+    74   000001                     	ds	2
+    75                           
+    76 ;;
+    77 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
+    78 ;;
+    79 ;; *************** function _main *****************
+    80 ;; Defined at:
+    81 ;;		line 10 in file "pushbuttonmotor.c"
+    82 ;; Parameters:    Size  Location     Type
+    83 ;;		None
+    84 ;; Auto vars:     Size  Location     Type
+    85 ;;  count           2    0[COMRAM] int 
+    86 ;; Return value:  Size  Location     Type
+    87 ;;                  1    wreg      void 
+    88 ;; Registers used:
+    89 ;;		wreg, status,2, status,0
+    90 ;; Tracked objects:
+    91 ;;		On entry : 0/0
+    92 ;;		On exit  : 0/0
+    93 ;;		Unchanged: 0/0
+    94 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+    95 ;;      Params:         0       0       0       0       0       0       0
+    96 ;;      Locals:         2       0       0       0       0       0       0
+    97 ;;      Temps:          0       0       0       0       0       0       0
+    98 ;;      Totals:         2       0       0       0       0       0       0
+    99 ;;Total ram usage:        2 bytes
+   100 ;; This function calls:
+   101 ;;		Nothing
+   102 ;; This function is called by:
+   103 ;;		Startup code after reset
+   104 ;; This function uses a non-reentrant model
+   105 ;;
+   106                           
+   107                           	psect	text0
+   108   000602                     __ptext0:
+   109                           	callstack 0
+   110   000602                     _main:
+   111                           	callstack 31
+   112   000602                     
+   113                           ;pushbuttonmotor.c: 12:       TRISC=0x01;
+   114   000602  0E01               	movlw	1
+   115   000604  6E94               	movwf	148,c	;volatile
+   116                           
+   117                           ;pushbuttonmotor.c: 13:       TRISD=0x00;
+   118   000606  0E00               	movlw	0
+   119   000608  6E95               	movwf	149,c	;volatile
+   120   00060A                     
+   121                           ;pushbuttonmotor.c: 14:       int count=-1;
+   122   00060A  6801               	setf	main@count^0,c
+   123   00060C  6802               	setf	(main@count+1)^0,c
+   124   00060E                     l706:
+   125                           
+   126                           ;pushbuttonmotor.c: 16:     {;pushbuttonmotor.c: 17:         if(RC0==1)
+   127   00060E  A082               	btfss	3970,0,c	;volatile
+   128   000610  EF0C  F003         	goto	u11
+   129   000614  EF0E  F003         	goto	u10
+   130   000618                     u11:
+   131   000618  EF23  F003         	goto	l714
+   132   00061C                     u10:
+   133   00061C                     
+   134                           ;pushbuttonmotor.c: 18:         {;pushbuttonmotor.c: 19:             if(count==2)
+   135   00061C  0E02               	movlw	2
+   136   00061E  1801               	xorwf	main@count^0,w,c
+   137   000620  1002               	iorwf	(main@count+1)^0,w,c
+   138   000622  A4D8               	btfss	status,2,c
+   139   000624  EF16  F003         	goto	u21
+   140   000628  EF18  F003         	goto	u20
+   141   00062C                     u21:
+   142   00062C  EF1A  F003         	goto	l712
+   143   000630                     u20:
+   144   000630                     
+   145                           ;pushbuttonmotor.c: 20:             {;pushbuttonmotor.c: 21:                 count=-1;
+   146   000630  6801               	setf	main@count^0,c
+   147   000632  6802               	setf	(main@count+1)^0,c
+   148   000634                     l712:
+   149                           
+   150                           ;pushbuttonmotor.c: 23:             count++;
+   151   000634  4A01               	infsnz	main@count^0,f,c
+   152   000636  2A02               	incf	(main@count+1)^0,f,c
+   153   000638                     l16:
+   154   000638  B082               	btfsc	3970,0,c	;volatile
+   155   00063A  EF21  F003         	goto	u31
+   156   00063E  EF23  F003         	goto	u30
+   157   000642                     u31:
+   158   000642  EF1C  F003         	goto	l16
+   159   000646                     u30:
+   160   000646                     l714:
+   161                           
+   162                           ;pushbuttonmotor.c: 27:          if(count==0)
+   163   000646  5001               	movf	main@count^0,w,c
+   164   000648  1002               	iorwf	(main@count+1)^0,w,c
+   165   00064A  A4D8               	btfss	status,2,c
+   166   00064C  EF2A  F003         	goto	u41
+   167   000650  EF2C  F003         	goto	u40
+   168   000654                     u41:
+   169   000654  EF30  F003         	goto	l718
+   170   000658                     u40:
+   171   000658                     
+   172                           ;pushbuttonmotor.c: 28:             {;pushbuttonmotor.c: 29:             PORTD=0X01;
+   173   000658  0E01               	movlw	1
+   174   00065A  6E83               	movwf	131,c	;volatile
+   175                           
+   176                           ;pushbuttonmotor.c: 31:             }
+   177   00065C  EF07  F003         	goto	l706
+   178   000660                     l718:
+   179   000660  0401               	decf	main@count^0,w,c
+   180   000662  1002               	iorwf	(main@count+1)^0,w,c
+   181   000664  A4D8               	btfss	status,2,c
+   182   000666  EF37  F003         	goto	u51
+   183   00066A  EF39  F003         	goto	u50
+   184   00066E                     u51:
+   185   00066E  EF3D  F003         	goto	l722
+   186   000672                     u50:
+   187   000672                     
+   188                           ;pushbuttonmotor.c: 33:             {;pushbuttonmotor.c: 34:             PORTD=0X02;
+   189   000672  0E02               	movlw	2
+   190   000674  6E83               	movwf	131,c	;volatile
+   191                           
+   192                           ;pushbuttonmotor.c: 36:             }
+   193   000676  EF07  F003         	goto	l706
+   194   00067A                     l722:
+   195   00067A  0E02               	movlw	2
+   196   00067C  1801               	xorwf	main@count^0,w,c
+   197   00067E  1002               	iorwf	(main@count+1)^0,w,c
+   198   000680  A4D8               	btfss	status,2,c
+   199   000682  EF45  F003         	goto	u61
+   200   000686  EF47  F003         	goto	u60
+   201   00068A                     u61:
+   202   00068A  EF4B  F003         	goto	l20
+   203   00068E                     u60:
+   204   00068E                     
+   205                           ;pushbuttonmotor.c: 38:             {;pushbuttonmotor.c: 39:              PORTD=0X00;
+   206   00068E  0E00               	movlw	0
+   207   000690  6E83               	movwf	131,c	;volatile
+   208   000692  EF07  F003         	goto	l706
+   209   000696                     l20:
+   210   000696  EF07  F003         	goto	l706
+   211   00069A  EF00  F000         	goto	start
+   212   00069E                     __end_of_main:
+   213                           	callstack 0
+   214                           
+   215                           	psect	smallconst
+   216   000600                     __psmallconst:
+   217                           	callstack 0
+   218   000600  00                 	db	0
+   219   000601  00                 	db	0	; dummy byte at the end
+   220   000000                     
+   221                           	psect	rparam
+   222   000000                     tosu	equ	0xFFF
+   223                           tosh	equ	0xFFE
+   224                           tosl	equ	0xFFD
+   225                           stkptr	equ	0xFFC
+   226                           pclatu	equ	0xFFB
+   227                           pclath	equ	0xFFA
+   228                           pcl	equ	0xFF9
+   229                           tblptru	equ	0xFF8
+   230                           tblptrh	equ	0xFF7
+   231                           tblptrl	equ	0xFF6
+   232                           tablat	equ	0xFF5
+   233                           prodh	equ	0xFF4
+   234                           prodl	equ	0xFF3
+   235                           indf0	equ	0xFEF
+   236                           postinc0	equ	0xFEE
+   237                           postdec0	equ	0xFED
+   238                           preinc0	equ	0xFEC
+   239                           plusw0	equ	0xFEB
+   240                           fsr0h	equ	0xFEA
+   241                           fsr0l	equ	0xFE9
+   242                           wreg	equ	0xFE8
+   243                           indf1	equ	0xFE7
+   244                           postinc1	equ	0xFE6
+   245                           postdec1	equ	0xFE5
+   246                           preinc1	equ	0xFE4
+   247                           plusw1	equ	0xFE3
+   248                           fsr1h	equ	0xFE2
+   249                           fsr1l	equ	0xFE1
+   250                           bsr	equ	0xFE0
+   251                           indf2	equ	0xFDF
+   252                           postinc2	equ	0xFDE
+   253                           postdec2	equ	0xFDD
+   254                           preinc2	equ	0xFDC
+   255                           plusw2	equ	0xFDB
+   256                           fsr2h	equ	0xFDA
+   257                           fsr2l	equ	0xFD9
+   258                           status	equ	0xFD8
+
+Data Sizes:
+    Strings     0
+    Constant    0
+    Data        0
+    BSS         0
+    Persistent  0
+    Stack       0
+
+Auto Spaces:
+    Space          Size  Autos    Used
+    COMRAM           95      2       2
+    BANK0           160      0       0
+    BANK1           256      0       0
+    BANK2           256      0       0
+    BANK3           256      0       0
+    BANK4           256      0       0
+    BANK5           256      0       0
+
+Pointer List with Targets:
+
+    None.
+
+Critical Paths under _main in COMRAM
+
+    None.
+
+Critical Paths under _main in BANK0
+
+    None.
+
+Critical Paths under _main in BANK1
+
+    None.
+
+Critical Paths under _main in BANK2
+
+    None.
+
+Critical Paths under _main in BANK3
+
+    None.
+
+Critical Paths under _main in BANK4
+
+    None.
+
+Critical Paths under _main in BANK5
+
+    None.
+
+Call Graph Tables:
+
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (0) _main                                                 2     2      0      60
+                                              0 COMRAM     2     2      0
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 0
+ ---------------------------------------------------------------------------------
+
+ Call Graph Graphs:
+
+ _main (ROOT)
+
+ Address spaces:
+Name               Size   Autos  Total    Cost      Usage
+BITCOMRAM           5F      0       0       0        0.0%
+EEDATA             100      0       0       0        0.0%
+NULL                 0      0       0       0        0.0%
+CODE                 0      0       0       0        0.0%
+COMRAM              5F      2       2       1        2.1%
+STACK                0      0       0       2        0.0%
+DATA                 0      0       0       3        0.0%
+BITBANK0            A0      0       0       4        0.0%
+BANK0               A0      0       0       5        0.0%
+BITBANK1           100      0       0       6        0.0%
+BANK1              100      0       0       7        0.0%
+BITBANK2           100      0       0       8        0.0%
+BANK2              100      0       0       9        0.0%
+BITBANK3           100      0       0      10        0.0%
+BANK3              100      0       0      11        0.0%
+BITBANK4           100      0       0      12        0.0%
+BANK4              100      0       0      13        0.0%
+BITBANK5           100      0       0      14        0.0%
+BANK5              100      0       0      15        0.0%
+BITBIGSFRh          6A      0       0      16        0.0%
+BITBIGSFRlh         10      0       0      17        0.0%
+BITBIGSFRll        282      0       0      18        0.0%
+ABS                  0      0       0      19        0.0%
+BIGRAM             5FF      0       0      20        0.0%
+BIGSFR               0      0       0     200        0.0%
+BITSFR_3             0      0       0     200        0.0%
+SFR_3                0      0       0     200        0.0%
+BITSFR_2             0      0       0     200        0.0%
+SFR_2                0      0       0     200        0.0%
+BITSFR_1             0      0       0     200        0.0%
+SFR_1                0      0       0     200        0.0%
+BITSFR               0      0       0     200        0.0%
+SFR                  0      0       0     200        0.0%
+
+
+Microchip Technology PIC18 Macro Assembler V2.46 build 20240104201356 
+Symbol Table                                                                                   Thu Aug 01 10:19:59 2024
+
+                     l20 0696                       l16 0638                       u10 061C  
+                     u11 0618                       u20 0630                       u21 062C  
+                     u30 0646                       u31 0642                       u40 0658  
+                     u41 0654                       u50 0672                       u51 066E  
+                     u60 068E                       u61 068A                      l710 0630  
+                    l702 0602                      l720 0672                      l712 0634  
+                    l704 060A                      l722 067A                      l714 0646  
+                    l706 060E                      l724 068E                      l716 0658  
+                    l708 061C                      l718 0660                      _RC0 7C10  
+                   _main 0602                     start 0000             ___param_bank 0000  
+                  ?_main 0001                    _PORTD 0F83                    _TRISC 0F94  
+                  _TRISD 0F95                    status 0FD8          __initialization 069E  
+           __end_of_main 069E                   ??_main 0001            __activetblptr 0000  
+                 isa$std 0001             __mediumconst 0000               __accesstop 0060  
+__end_of__initialization 069E            ___rparam_used 0001           __pcstackCOMRAM 0001  
+                __Hparam 0000                  __Lparam 0000             __psmallconst 0600  
+                __pcinit 069E                  __ramtop 0600                  __ptext0 0602  
+   end_of_initialization 069E      start_initialization 069E              __smallconst 0600  
+              main@count 0001                 __Hrparam 0000                 __Lrparam 0000  
+               isa$xinst 0000  

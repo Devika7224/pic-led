@@ -1,0 +1,1119 @@
+
+
+Microchip MPLAB XC8 Assembler V2.46 build 20240104201356 
+                                                                                               Fri Aug 09 09:21:46 2024
+
+Microchip MPLAB XC8 C Compiler v2.46 (Free license) build 20240104201356 Og1 
+     1                           	processor	18F4580
+     2                           	fnconf	rparam,??,?,0
+     3                           	pagewidth 120
+     4                           	opt	flic
+     5                           	psect	smallconst,global,reloc=2,class=SMALLCONST,delta=1,noexec
+     6                           	psect	cinit,global,reloc=2,class=CODE,delta=1
+     7                           	psect	cstackCOMRAM,global,class=COMRAM,space=1,delta=1,lowdata,noexec
+     8                           	psect	text0,global,reloc=2,class=CODE,delta=1
+     9                           	psect	text1,global,reloc=2,class=CODE,delta=1
+    10                           	psect	text2,global,reloc=2,class=CODE,delta=1
+    11                           	psect	text3,global,reloc=2,class=CODE,delta=1
+    12                           	psect	intsave_regs,global,class=BIGRAM,space=1,delta=1,noexec
+    13                           	psect	rparam,global,class=COMRAM,space=1,delta=1,noexec
+    14   000000                     
+    15                           ; Generated 17/10/2023 GMT
+    16                           ; 
+    17                           ; Copyright © 2023, Microchip Technology Inc. and its subsidiaries ("Microchip")
+    18                           ; All rights reserved.
+    19                           ; 
+    20                           ; This software is developed by Microchip Technology Inc. and its subsidiaries ("Microch
+      +                          ip").
+    21                           ; 
+    22                           ; Redistribution and use in source and binary forms, with or without modification, are
+    23                           ; permitted provided that the following conditions are met:
+    24                           ; 
+    25                           ;     1. Redistributions of source code must retain the above copyright notice, this lis
+      +                          t of
+    26                           ;        conditions and the following disclaimer.
+    27                           ; 
+    28                           ;     2. Redistributions in binary form must reproduce the above copyright notice, this 
+      +                          list
+    29                           ;        of conditions and the following disclaimer in the documentation and/or other
+    30                           ;        materials provided with the distribution. Publication is not required when
+    31                           ;        this file is used in an embedded application.
+    32                           ; 
+    33                           ;     3. Microchip's name may not be used to endorse or promote products derived from th
+      +                          is
+    34                           ;        software without specific prior written permission.
+    35                           ; 
+    36                           ; THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+    37                           ; INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS F
+      +                          OR
+    38                           ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL MICROCHIP BE LIABLE FOR ANY DIRECT, INDIREC
+      +                          T,
+    39                           ; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
+    40                           ; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
+    41                           ; INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, ST
+      +                          RICT
+    42                           ; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE U
+      +                          SE OF
+    43                           ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+    44                           ; 
+    45                           ; 
+    46                           ; Code-generator required, PIC18F4580 Definitions
+    47                           ; 
+    48                           ; SFR Addresses
+    49   000000                     _RC2	set	31762
+    50   000000                     _RC1	set	31761
+    51   000000                     _RB7	set	31759
+    52   000000                     _RB6	set	31758
+    53   000000                     _RB5	set	31757
+    54   000000                     _RB4	set	31756
+    55   000000                     _PORTB	set	3969
+    56   000000                     _TRISB	set	3987
+    57   000000                     _ADCON1	set	4033
+    58   000000                     _TRISD	set	3989
+    59   000000                     _TRISC	set	3988
+    60   000000                     _PORTD	set	3971
+    61   000000                     _RC0	set	31760
+    62                           
+    63                           	psect	smallconst
+    64   000600                     __psmallconst:
+    65                           	callstack 0
+    66   000600  00                 	db	0
+    67   000601                     STR_16:
+    68   000601  30                 	db	48	;'0'
+    69   000602  00                 	db	0
+    70   000603                     STR_1:
+    71   000603  31                 	db	49	;'1'
+    72   000604  00                 	db	0
+    73   000605                     STR_2:
+    74   000605  32                 	db	50	;'2'
+    75   000606  00                 	db	0
+    76   000607                     STR_3:
+    77   000607  33                 	db	51	;'3'
+    78   000608  00                 	db	0
+    79   000609                     STR_4:
+    80   000609  34                 	db	52	;'4'
+    81   00060A  00                 	db	0
+    82   00060B                     STR_5:
+    83   00060B  35                 	db	53	;'5'
+    84   00060C  00                 	db	0
+    85   00060D                     STR_6:
+    86   00060D  36                 	db	54	;'6'
+    87   00060E  00                 	db	0
+    88   00060F                     STR_7:
+    89   00060F  37                 	db	55	;'7'
+    90   000610  00                 	db	0
+    91   000611                     STR_8:
+    92   000611  38                 	db	56	;'8'
+    93   000612  00                 	db	0
+    94   000613                     STR_9:
+    95   000613  39                 	db	57	;'9'
+    96   000614  00                 	db	0
+    97   000615                     STR_10:
+    98   000615  41                 	db	65	;'A'
+    99   000616  00                 	db	0
+   100   000617                     STR_11:
+   101   000617  42                 	db	66	;'B'
+   102   000618  00                 	db	0
+   103   000619                     STR_12:
+   104   000619  43                 	db	67	;'C'
+   105   00061A  00                 	db	0
+   106   00061B                     STR_13:
+   107   00061B  44                 	db	68	;'D'
+   108   00061C  00                 	db	0
+   109   00061D                     STR_14:
+   110   00061D  45                 	db	69	;'E'
+   111   00061E  00                 	db	0
+   112   00061F                     STR_15:
+   113   00061F  46                 	db	70	;'F'
+   114   000620  00                 	db	0
+   115   000621  00                 	db	0	; dummy byte at the end
+   116   000000                     
+   117                           ; #config settings
+   118                           
+   119                           	psect	cinit
+   120   0009B2                     __pcinit:
+   121                           	callstack 0
+   122   0009B2                     start_initialization:
+   123                           	callstack 0
+   124   0009B2                     __initialization:
+   125                           	callstack 0
+   126   0009B2                     end_of_initialization:
+   127                           	callstack 0
+   128   0009B2                     __end_of__initialization:
+   129                           	callstack 0
+   130   0009B2  0E00               	movlw	low (__Lsmallconst shr (0+16))
+   131   0009B4  6EF8               	movwf	tblptru,c
+   132   0009B6  0E06               	movlw	high __Lsmallconst
+   133   0009B8  6EF7               	movwf	tblptrh,c
+   134   0009BA  0100               	movlb	0
+   135   0009BC  EF11  F003         	goto	_main	;jump to C main() function
+   136                           
+   137                           	psect	cstackCOMRAM
+   138   000001                     __pcstackCOMRAM:
+   139                           	callstack 0
+   140   000001                     cmd@a:
+   141                           	callstack 0
+   142   000001                     data@a:
+   143                           	callstack 0
+   144                           
+   145                           ; 1 bytes @ 0x0
+   146   000001                     	ds	1
+   147   000002                     cmd@i:
+   148                           	callstack 0
+   149   000002                     data@i:
+   150                           	callstack 0
+   151                           
+   152                           ; 2 bytes @ 0x1
+   153   000002                     	ds	2
+   154   000004                     cmd@i_71:
+   155                           	callstack 0
+   156   000004                     data@i_75:
+   157                           	callstack 0
+   158                           
+   159                           ; 2 bytes @ 0x3
+   160   000004                     	ds	2
+   161   000006                     display@p:
+   162                           	callstack 0
+   163                           
+   164                           ; 1 bytes @ 0x5
+   165   000006                     	ds	1
+   166   000007                     
+   167                           ; 1 bytes @ 0x6
+   168 ;;
+   169 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
+   170 ;;
+   171 ;; *************** function _main *****************
+   172 ;; Defined at:
+   173 ;;		line 12 in file "MATRIXWITHOUTCLEAR.c"
+   174 ;; Parameters:    Size  Location     Type
+   175 ;;		None
+   176 ;; Auto vars:     Size  Location     Type
+   177 ;;		None
+   178 ;; Return value:  Size  Location     Type
+   179 ;;                  1    wreg      void 
+   180 ;; Registers used:
+   181 ;;		wreg, status,2, status,0, tblptrl, tblptrh, tblptru, cstack
+   182 ;; Tracked objects:
+   183 ;;		On entry : 0/0
+   184 ;;		On exit  : 0/0
+   185 ;;		Unchanged: 0/0
+   186 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   187 ;;      Params:         0       0       0       0       0       0       0
+   188 ;;      Locals:         0       0       0       0       0       0       0
+   189 ;;      Temps:          0       0       0       0       0       0       0
+   190 ;;      Totals:         0       0       0       0       0       0       0
+   191 ;;Total ram usage:        0 bytes
+   192 ;; Hardware stack levels required when called: 2
+   193 ;; This function calls:
+   194 ;;		_cmd
+   195 ;;		_display
+   196 ;; This function is called by:
+   197 ;;		Startup code after reset
+   198 ;; This function uses a non-reentrant model
+   199 ;;
+   200                           
+   201                           	psect	text0
+   202   000622                     __ptext0:
+   203                           	callstack 0
+   204   000622                     _main:
+   205                           	callstack 29
+   206   000622                     
+   207                           ;MATRIXWITHOUTCLEAR.c: 14:     ADCON1=0X0F;
+   208   000622  0E0F               	movlw	15
+   209   000624  6EC1               	movwf	193,c	;volatile
+   210                           
+   211                           ;MATRIXWITHOUTCLEAR.c: 15:     TRISB=0XF0;
+   212   000626  0EF0               	movlw	240
+   213   000628  6E93               	movwf	147,c	;volatile
+   214                           
+   215                           ;MATRIXWITHOUTCLEAR.c: 16:     TRISC=0X00;
+   216   00062A  0E00               	movlw	0
+   217   00062C  6E94               	movwf	148,c	;volatile
+   218                           
+   219                           ;MATRIXWITHOUTCLEAR.c: 17:     TRISD=0X00;
+   220   00062E  0E00               	movlw	0
+   221   000630  6E95               	movwf	149,c	;volatile
+   222   000632                     
+   223                           ;MATRIXWITHOUTCLEAR.c: 18:     cmd(0x0F);
+   224   000632  0E0F               	movlw	15
+   225   000634  EC93  F004         	call	_cmd
+   226   000638                     
+   227                           ;MATRIXWITHOUTCLEAR.c: 19:     cmd(0X0C);
+   228   000638  0E0C               	movlw	12
+   229   00063A  EC93  F004         	call	_cmd
+   230   00063E                     l35:
+   231                           
+   232                           ;MATRIXWITHOUTCLEAR.c: 22:     {;MATRIXWITHOUTCLEAR.c: 23:     PORTB=0X0E;
+   233   00063E  0E0E               	movlw	14
+   234   000640  6E81               	movwf	129,c	;volatile
+   235   000642                     
+   236                           ;MATRIXWITHOUTCLEAR.c: 24:     if(RB4==0)
+   237   000642  B881               	btfsc	3969,4,c	;volatile
+   238   000644  EF26  F003         	goto	u391
+   239   000648  EF28  F003         	goto	u390
+   240   00064C                     u391:
+   241   00064C  EF35  F003         	goto	l36
+   242   000650                     u390:
+   243   000650                     
+   244                           ;MATRIXWITHOUTCLEAR.c: 25:        {;MATRIXWITHOUTCLEAR.c: 28:            display("1");
+   245   000650  0E03               	movlw	low STR_1
+   246   000652  6E06               	movwf	display@p^0,c
+   247   000654  ECC3  F004         	call	_display	;wreg free
+   248   000658                     l37:
+   249   000658  A881               	btfss	3969,4,c	;volatile
+   250   00065A  EF31  F003         	goto	u401
+   251   00065E  EF33  F003         	goto	u400
+   252   000662                     u401:
+   253   000662  EF2C  F003         	goto	l37
+   254   000666                     u400:
+   255   000666  EF6F  F003         	goto	l946
+   256   00066A                     l36:
+   257   00066A  BA81               	btfsc	3969,5,c	;volatile
+   258   00066C  EF3A  F003         	goto	u411
+   259   000670  EF3C  F003         	goto	u410
+   260   000674                     u411:
+   261   000674  EF49  F003         	goto	l41
+   262   000678                     u410:
+   263   000678                     
+   264                           ;MATRIXWITHOUTCLEAR.c: 32:        {;MATRIXWITHOUTCLEAR.c: 35:            display("2");
+   265   000678  0E05               	movlw	low STR_2
+   266   00067A  6E06               	movwf	display@p^0,c
+   267   00067C  ECC3  F004         	call	_display	;wreg free
+   268   000680                     l42:
+   269   000680  AA81               	btfss	3969,5,c	;volatile
+   270   000682  EF45  F003         	goto	u421
+   271   000686  EF47  F003         	goto	u420
+   272   00068A                     u421:
+   273   00068A  EF40  F003         	goto	l42
+   274   00068E                     u420:
+   275   00068E  EF6F  F003         	goto	l946
+   276   000692                     l41:
+   277   000692  BC81               	btfsc	3969,6,c	;volatile
+   278   000694  EF4E  F003         	goto	u431
+   279   000698  EF50  F003         	goto	u430
+   280   00069C                     u431:
+   281   00069C  EF5D  F003         	goto	l46
+   282   0006A0                     u430:
+   283   0006A0                     
+   284                           ;MATRIXWITHOUTCLEAR.c: 39:        {;MATRIXWITHOUTCLEAR.c: 42:             display("3");
+   285   0006A0  0E07               	movlw	low STR_3
+   286   0006A2  6E06               	movwf	display@p^0,c
+   287   0006A4  ECC3  F004         	call	_display	;wreg free
+   288   0006A8                     l47:
+   289   0006A8  AC81               	btfss	3969,6,c	;volatile
+   290   0006AA  EF59  F003         	goto	u441
+   291   0006AE  EF5B  F003         	goto	u440
+   292   0006B2                     u441:
+   293   0006B2  EF54  F003         	goto	l47
+   294   0006B6                     u440:
+   295   0006B6  EF6F  F003         	goto	l946
+   296   0006BA                     l46:
+   297   0006BA  BE81               	btfsc	3969,7,c	;volatile
+   298   0006BC  EF62  F003         	goto	u451
+   299   0006C0  EF64  F003         	goto	u450
+   300   0006C4                     u451:
+   301   0006C4  EF6F  F003         	goto	l946
+   302   0006C8                     u450:
+   303   0006C8                     
+   304                           ;MATRIXWITHOUTCLEAR.c: 46:        {;MATRIXWITHOUTCLEAR.c: 48:             display("4");
+   305   0006C8  0E09               	movlw	low STR_4
+   306   0006CA  6E06               	movwf	display@p^0,c
+   307   0006CC  ECC3  F004         	call	_display	;wreg free
+   308   0006D0                     l52:
+   309   0006D0  AE81               	btfss	3969,7,c	;volatile
+   310   0006D2  EF6D  F003         	goto	u461
+   311   0006D6  EF6F  F003         	goto	u460
+   312   0006DA                     u461:
+   313   0006DA  EF68  F003         	goto	l52
+   314   0006DE                     u460:
+   315   0006DE                     l946:
+   316                           
+   317                           ;MATRIXWITHOUTCLEAR.c: 51:        PORTB=0X0D;
+   318   0006DE  0E0D               	movlw	13
+   319   0006E0  6E81               	movwf	129,c	;volatile
+   320   0006E2                     
+   321                           ;MATRIXWITHOUTCLEAR.c: 53:        if(RB4==0)
+   322   0006E2  B881               	btfsc	3969,4,c	;volatile
+   323   0006E4  EF76  F003         	goto	u471
+   324   0006E8  EF78  F003         	goto	u470
+   325   0006EC                     u471:
+   326   0006EC  EF85  F003         	goto	l55
+   327   0006F0                     u470:
+   328   0006F0                     
+   329                           ;MATRIXWITHOUTCLEAR.c: 54:        {;MATRIXWITHOUTCLEAR.c: 56:            display("5");
+   330   0006F0  0E0B               	movlw	low STR_5
+   331   0006F2  6E06               	movwf	display@p^0,c
+   332   0006F4  ECC3  F004         	call	_display	;wreg free
+   333   0006F8                     l56:
+   334   0006F8  A881               	btfss	3969,4,c	;volatile
+   335   0006FA  EF81  F003         	goto	u481
+   336   0006FE  EF83  F003         	goto	u480
+   337   000702                     u481:
+   338   000702  EF7C  F003         	goto	l56
+   339   000706                     u480:
+   340   000706  EFBF  F003         	goto	l958
+   341   00070A                     l55:
+   342   00070A  BA81               	btfsc	3969,5,c	;volatile
+   343   00070C  EF8A  F003         	goto	u491
+   344   000710  EF8C  F003         	goto	u490
+   345   000714                     u491:
+   346   000714  EF99  F003         	goto	l60
+   347   000718                     u490:
+   348   000718                     
+   349                           ;MATRIXWITHOUTCLEAR.c: 60:        {;MATRIXWITHOUTCLEAR.c: 62:             display("6");
+   350   000718  0E0D               	movlw	low STR_6
+   351   00071A  6E06               	movwf	display@p^0,c
+   352   00071C  ECC3  F004         	call	_display	;wreg free
+   353   000720                     l61:
+   354   000720  AA81               	btfss	3969,5,c	;volatile
+   355   000722  EF95  F003         	goto	u501
+   356   000726  EF97  F003         	goto	u500
+   357   00072A                     u501:
+   358   00072A  EF90  F003         	goto	l61
+   359   00072E                     u500:
+   360   00072E  EFBF  F003         	goto	l958
+   361   000732                     l60:
+   362   000732  BC81               	btfsc	3969,6,c	;volatile
+   363   000734  EF9E  F003         	goto	u511
+   364   000738  EFA0  F003         	goto	u510
+   365   00073C                     u511:
+   366   00073C  EFAD  F003         	goto	l65
+   367   000740                     u510:
+   368   000740                     
+   369                           ;MATRIXWITHOUTCLEAR.c: 66:        {;MATRIXWITHOUTCLEAR.c: 68:             display("7");
+   370   000740  0E0F               	movlw	low STR_7
+   371   000742  6E06               	movwf	display@p^0,c
+   372   000744  ECC3  F004         	call	_display	;wreg free
+   373   000748                     l66:
+   374   000748  AC81               	btfss	3969,6,c	;volatile
+   375   00074A  EFA9  F003         	goto	u521
+   376   00074E  EFAB  F003         	goto	u520
+   377   000752                     u521:
+   378   000752  EFA4  F003         	goto	l66
+   379   000756                     u520:
+   380   000756  EFBF  F003         	goto	l958
+   381   00075A                     l65:
+   382   00075A  BE81               	btfsc	3969,7,c	;volatile
+   383   00075C  EFB2  F003         	goto	u531
+   384   000760  EFB4  F003         	goto	u530
+   385   000764                     u531:
+   386   000764  EFBF  F003         	goto	l958
+   387   000768                     u530:
+   388   000768                     
+   389                           ;MATRIXWITHOUTCLEAR.c: 72:        {;MATRIXWITHOUTCLEAR.c: 74:             display("8");
+   390   000768  0E11               	movlw	low STR_8
+   391   00076A  6E06               	movwf	display@p^0,c
+   392   00076C  ECC3  F004         	call	_display	;wreg free
+   393   000770                     l71:
+   394   000770  AE81               	btfss	3969,7,c	;volatile
+   395   000772  EFBD  F003         	goto	u541
+   396   000776  EFBF  F003         	goto	u540
+   397   00077A                     u541:
+   398   00077A  EFB8  F003         	goto	l71
+   399   00077E                     u540:
+   400   00077E                     l958:
+   401                           
+   402                           ;MATRIXWITHOUTCLEAR.c: 78:        PORTB=0X0B;
+   403   00077E  0E0B               	movlw	11
+   404   000780  6E81               	movwf	129,c	;volatile
+   405   000782                     
+   406                           ;MATRIXWITHOUTCLEAR.c: 80:        if(RB4==0)
+   407   000782  B881               	btfsc	3969,4,c	;volatile
+   408   000784  EFC6  F003         	goto	u551
+   409   000788  EFC8  F003         	goto	u550
+   410   00078C                     u551:
+   411   00078C  EFD5  F003         	goto	l74
+   412   000790                     u550:
+   413   000790                     
+   414                           ;MATRIXWITHOUTCLEAR.c: 81:        {;MATRIXWITHOUTCLEAR.c: 84:            display("9");
+   415   000790  0E13               	movlw	low STR_9
+   416   000792  6E06               	movwf	display@p^0,c
+   417   000794  ECC3  F004         	call	_display	;wreg free
+   418   000798                     l75:
+   419   000798  A881               	btfss	3969,4,c	;volatile
+   420   00079A  EFD1  F003         	goto	u561
+   421   00079E  EFD3  F003         	goto	u560
+   422   0007A2                     u561:
+   423   0007A2  EFCC  F003         	goto	l75
+   424   0007A6                     u560:
+   425   0007A6  EF0F  F004         	goto	l970
+   426   0007AA                     l74:
+   427   0007AA  BA81               	btfsc	3969,5,c	;volatile
+   428   0007AC  EFDA  F003         	goto	u571
+   429   0007B0  EFDC  F003         	goto	u570
+   430   0007B4                     u571:
+   431   0007B4  EFE9  F003         	goto	l79
+   432   0007B8                     u570:
+   433   0007B8                     
+   434                           ;MATRIXWITHOUTCLEAR.c: 89:        {;MATRIXWITHOUTCLEAR.c: 92:            display("A");
+   435   0007B8  0E15               	movlw	low STR_10
+   436   0007BA  6E06               	movwf	display@p^0,c
+   437   0007BC  ECC3  F004         	call	_display	;wreg free
+   438   0007C0                     l80:
+   439   0007C0  AA81               	btfss	3969,5,c	;volatile
+   440   0007C2  EFE5  F003         	goto	u581
+   441   0007C6  EFE7  F003         	goto	u580
+   442   0007CA                     u581:
+   443   0007CA  EFE0  F003         	goto	l80
+   444   0007CE                     u580:
+   445   0007CE  EF0F  F004         	goto	l970
+   446   0007D2                     l79:
+   447   0007D2  BC81               	btfsc	3969,6,c	;volatile
+   448   0007D4  EFEE  F003         	goto	u591
+   449   0007D8  EFF0  F003         	goto	u590
+   450   0007DC                     u591:
+   451   0007DC  EFFD  F003         	goto	l84
+   452   0007E0                     u590:
+   453   0007E0                     
+   454                           ;MATRIXWITHOUTCLEAR.c: 96:        {;MATRIXWITHOUTCLEAR.c: 99:            display("B");
+   455   0007E0  0E17               	movlw	low STR_11
+   456   0007E2  6E06               	movwf	display@p^0,c
+   457   0007E4  ECC3  F004         	call	_display	;wreg free
+   458   0007E8                     l85:
+   459   0007E8  AC81               	btfss	3969,6,c	;volatile
+   460   0007EA  EFF9  F003         	goto	u601
+   461   0007EE  EFFB  F003         	goto	u600
+   462   0007F2                     u601:
+   463   0007F2  EFF4  F003         	goto	l85
+   464   0007F6                     u600:
+   465   0007F6  EF0F  F004         	goto	l970
+   466   0007FA                     l84:
+   467   0007FA  BE81               	btfsc	3969,7,c	;volatile
+   468   0007FC  EF02  F004         	goto	u611
+   469   000800  EF04  F004         	goto	u610
+   470   000804                     u611:
+   471   000804  EF0F  F004         	goto	l970
+   472   000808                     u610:
+   473   000808                     
+   474                           ;MATRIXWITHOUTCLEAR.c: 103:        {;MATRIXWITHOUTCLEAR.c: 106:            display("C");
+   475   000808  0E19               	movlw	low STR_12
+   476   00080A  6E06               	movwf	display@p^0,c
+   477   00080C  ECC3  F004         	call	_display	;wreg free
+   478   000810                     l90:
+   479   000810  AE81               	btfss	3969,7,c	;volatile
+   480   000812  EF0D  F004         	goto	u621
+   481   000816  EF0F  F004         	goto	u620
+   482   00081A                     u621:
+   483   00081A  EF08  F004         	goto	l90
+   484   00081E                     u620:
+   485   00081E                     l970:
+   486                           
+   487                           ;MATRIXWITHOUTCLEAR.c: 110:        PORTB=0X07;
+   488   00081E  0E07               	movlw	7
+   489   000820  6E81               	movwf	129,c	;volatile
+   490   000822                     
+   491                           ;MATRIXWITHOUTCLEAR.c: 112:        if(RB4==0)
+   492   000822  B881               	btfsc	3969,4,c	;volatile
+   493   000824  EF16  F004         	goto	u631
+   494   000828  EF18  F004         	goto	u630
+   495   00082C                     u631:
+   496   00082C  EF25  F004         	goto	l93
+   497   000830                     u630:
+   498   000830                     
+   499                           ;MATRIXWITHOUTCLEAR.c: 113:        {;MATRIXWITHOUTCLEAR.c: 116:            display("D");
+   500   000830  0E1B               	movlw	low STR_13
+   501   000832  6E06               	movwf	display@p^0,c
+   502   000834  ECC3  F004         	call	_display	;wreg free
+   503   000838                     l94:
+   504   000838  A881               	btfss	3969,4,c	;volatile
+   505   00083A  EF21  F004         	goto	u641
+   506   00083E  EF23  F004         	goto	u640
+   507   000842                     u641:
+   508   000842  EF1C  F004         	goto	l94
+   509   000846                     u640:
+   510   000846  EF1F  F003         	goto	l35
+   511   00084A                     l93:
+   512   00084A  BA81               	btfsc	3969,5,c	;volatile
+   513   00084C  EF2A  F004         	goto	u651
+   514   000850  EF2C  F004         	goto	u650
+   515   000854                     u651:
+   516   000854  EF39  F004         	goto	l98
+   517   000858                     u650:
+   518   000858                     
+   519                           ;MATRIXWITHOUTCLEAR.c: 121:        {;MATRIXWITHOUTCLEAR.c: 124:            display("E");
+   520   000858  0E1D               	movlw	low STR_14
+   521   00085A  6E06               	movwf	display@p^0,c
+   522   00085C  ECC3  F004         	call	_display	;wreg free
+   523   000860                     l99:
+   524   000860  AA81               	btfss	3969,5,c	;volatile
+   525   000862  EF35  F004         	goto	u661
+   526   000866  EF37  F004         	goto	u660
+   527   00086A                     u661:
+   528   00086A  EF30  F004         	goto	l99
+   529   00086E                     u660:
+   530   00086E  EF1F  F003         	goto	l35
+   531   000872                     l98:
+   532   000872  BC81               	btfsc	3969,6,c	;volatile
+   533   000874  EF3E  F004         	goto	u671
+   534   000878  EF40  F004         	goto	u670
+   535   00087C                     u671:
+   536   00087C  EF4D  F004         	goto	l103
+   537   000880                     u670:
+   538   000880                     
+   539                           ;MATRIXWITHOUTCLEAR.c: 128:        {;MATRIXWITHOUTCLEAR.c: 131:            display("F");
+   540   000880  0E1F               	movlw	low STR_15
+   541   000882  6E06               	movwf	display@p^0,c
+   542   000884  ECC3  F004         	call	_display	;wreg free
+   543   000888                     l104:
+   544   000888  AC81               	btfss	3969,6,c	;volatile
+   545   00088A  EF49  F004         	goto	u681
+   546   00088E  EF4B  F004         	goto	u680
+   547   000892                     u681:
+   548   000892  EF44  F004         	goto	l104
+   549   000896                     u680:
+   550   000896  EF1F  F003         	goto	l35
+   551   00089A                     l103:
+   552   00089A  BE81               	btfsc	3969,7,c	;volatile
+   553   00089C  EF52  F004         	goto	u691
+   554   0008A0  EF54  F004         	goto	u690
+   555   0008A4                     u691:
+   556   0008A4  EF1F  F003         	goto	l35
+   557   0008A8                     u690:
+   558   0008A8                     
+   559                           ;MATRIXWITHOUTCLEAR.c: 135:        {;MATRIXWITHOUTCLEAR.c: 138:            display("0");
+   560   0008A8  0E01               	movlw	low STR_16
+   561   0008AA  6E06               	movwf	display@p^0,c
+   562   0008AC  ECC3  F004         	call	_display	;wreg free
+   563   0008B0                     l109:
+   564   0008B0  AE81               	btfss	3969,7,c	;volatile
+   565   0008B2  EF5D  F004         	goto	u701
+   566   0008B6  EF5F  F004         	goto	u700
+   567   0008BA                     u701:
+   568   0008BA  EF58  F004         	goto	l109
+   569   0008BE                     u700:
+   570   0008BE  EF1F  F003         	goto	l35
+   571   0008C2  EF00  F000         	goto	start
+   572   0008C6                     __end_of_main:
+   573                           	callstack 0
+   574                           
+   575 ;; *************** function _display *****************
+   576 ;; Defined at:
+   577 ;;		line 164 in file "MATRIXWITHOUTCLEAR.c"
+   578 ;; Parameters:    Size  Location     Type
+   579 ;;  p               1    5[COMRAM] PTR const unsigned char 
+   580 ;;		 -> STR_16(2), STR_15(2), STR_14(2), STR_13(2), 
+   581 ;;		 -> STR_12(2), STR_11(2), STR_10(2), STR_9(2), 
+   582 ;;		 -> STR_8(2), STR_7(2), STR_6(2), STR_5(2), 
+   583 ;;		 -> STR_4(2), STR_3(2), STR_2(2), STR_1(2), 
+   584 ;; Auto vars:     Size  Location     Type
+   585 ;;		None
+   586 ;; Return value:  Size  Location     Type
+   587 ;;                  1    wreg      void 
+   588 ;; Registers used:
+   589 ;;		wreg, status,2, status,0, tblptrl, tblptrh, tblptru, cstack
+   590 ;; Tracked objects:
+   591 ;;		On entry : 0/0
+   592 ;;		On exit  : 0/0
+   593 ;;		Unchanged: 0/0
+   594 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   595 ;;      Params:         1       0       0       0       0       0       0
+   596 ;;      Locals:         0       0       0       0       0       0       0
+   597 ;;      Temps:          0       0       0       0       0       0       0
+   598 ;;      Totals:         1       0       0       0       0       0       0
+   599 ;;Total ram usage:        1 bytes
+   600 ;; Hardware stack levels used: 1
+   601 ;; Hardware stack levels required when called: 1
+   602 ;; This function calls:
+   603 ;;		_data
+   604 ;; This function is called by:
+   605 ;;		_main
+   606 ;; This function uses a non-reentrant model
+   607 ;;
+   608                           
+   609                           	psect	text1
+   610   000986                     __ptext1:
+   611                           	callstack 0
+   612   000986                     _display:
+   613                           	callstack 29
+   614   000986                     
+   615                           ;MATRIXWITHOUTCLEAR.c: 164: void display(const char *p);MATRIXWITHOUTCLEAR.c: 165: {;MAT
+      +                          RIXWITHOUTCLEAR.c: 166:     while(*p)
+   616   000986  EFCC  F004         	goto	l928
+   617   00098A                     l924:
+   618                           
+   619                           ;MATRIXWITHOUTCLEAR.c: 167:     {;MATRIXWITHOUTCLEAR.c: 168:         data(*p);
+   620   00098A  C006  FFF6         	movff	display@p,tblptrl
+   621   00098E                     	if	0	;There is only one active tblptr byte
+   622   00098E                     	endif
+   623   00098E                     	if	0	;tblptru may be non-zero
+   624   00098E                     	endif
+   625   00098E                     	if	0	;tblptru may be non-zero
+   626   00098E                     	endif
+   627   00098E  0008               	tblrd		*
+   628   000990  50F5               	movf	tablat,w,c
+   629   000992  EC63  F004         	call	_data
+   630   000996                     
+   631                           ;MATRIXWITHOUTCLEAR.c: 169:         p++;
+   632   000996  2A06               	incf	display@p^0,f,c
+   633   000998                     l928:
+   634                           
+   635                           ;MATRIXWITHOUTCLEAR.c: 166:     while(*p)
+   636   000998  C006  FFF6         	movff	display@p,tblptrl
+   637   00099C                     	if	0	;There is only one active tblptr byte
+   638   00099C                     	endif
+   639   00099C                     	if	0	;tblptru may be non-zero
+   640   00099C                     	endif
+   641   00099C                     	if	0	;tblptru may be non-zero
+   642   00099C                     	endif
+   643   00099C  0008               	tblrd		*
+   644   00099E  50F5               	movf	tablat,w,c
+   645   0009A0  0900               	iorlw	0
+   646   0009A2  A4D8               	btfss	status,2,c
+   647   0009A4  EFD6  F004         	goto	u381
+   648   0009A8  EFD8  F004         	goto	u380
+   649   0009AC                     u381:
+   650   0009AC  EFC5  F004         	goto	l924
+   651   0009B0                     u380:
+   652   0009B0  0012               	return		;funcret
+   653   0009B2                     __end_of_display:
+   654                           	callstack 0
+   655                           
+   656 ;; *************** function _data *****************
+   657 ;; Defined at:
+   658 ;;		line 153 in file "MATRIXWITHOUTCLEAR.c"
+   659 ;; Parameters:    Size  Location     Type
+   660 ;;  a               1    wreg     unsigned char 
+   661 ;; Auto vars:     Size  Location     Type
+   662 ;;  a               1    0[COMRAM] unsigned char 
+   663 ;;  i               2    3[COMRAM] int 
+   664 ;;  i               2    1[COMRAM] int 
+   665 ;; Return value:  Size  Location     Type
+   666 ;;                  1    wreg      void 
+   667 ;; Registers used:
+   668 ;;		wreg, status,2, status,0
+   669 ;; Tracked objects:
+   670 ;;		On entry : 0/0
+   671 ;;		On exit  : 0/0
+   672 ;;		Unchanged: 0/0
+   673 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   674 ;;      Params:         0       0       0       0       0       0       0
+   675 ;;      Locals:         5       0       0       0       0       0       0
+   676 ;;      Temps:          0       0       0       0       0       0       0
+   677 ;;      Totals:         5       0       0       0       0       0       0
+   678 ;;Total ram usage:        5 bytes
+   679 ;; Hardware stack levels used: 1
+   680 ;; This function calls:
+   681 ;;		Nothing
+   682 ;; This function is called by:
+   683 ;;		_display
+   684 ;; This function uses a non-reentrant model
+   685 ;;
+   686                           
+   687                           	psect	text2
+   688   0008C6                     __ptext2:
+   689                           	callstack 0
+   690   0008C6                     _data:
+   691                           	callstack 29
+   692                           
+   693                           ;incstack = 0
+   694                           ;data@a stored from wreg
+   695   0008C6  6E01               	movwf	data@a^0,c
+   696   0008C8                     
+   697                           ;MATRIXWITHOUTCLEAR.c: 153: void data(unsigned char a );MATRIXWITHOUTCLEAR.c: 154: {;MAT
+      +                          RIXWITHOUTCLEAR.c: 155:     RC0=1;
+   698   0008C8  8082               	bsf	3970,0,c	;volatile
+   699                           
+   700                           ;MATRIXWITHOUTCLEAR.c: 156:     RC1=0;
+   701   0008CA  9282               	bcf	3970,1,c	;volatile
+   702   0008CC                     
+   703                           ;MATRIXWITHOUTCLEAR.c: 157:     PORTD=a;
+   704   0008CC  C001  FF83         	movff	data@a,3971	;volatile
+   705   0008D0                     
+   706                           ;MATRIXWITHOUTCLEAR.c: 158:     RC2=1;
+   707   0008D0  8482               	bsf	3970,2,c	;volatile
+   708   0008D2                     
+   709                           ;MATRIXWITHOUTCLEAR.c: 159:     for(int i=0;i<=100;i++);
+   710   0008D2  0E00               	movlw	0
+   711   0008D4  6E03               	movwf	(data@i+1)^0,c
+   712   0008D6  0E00               	movlw	0
+   713   0008D8  6E02               	movwf	data@i^0,c
+   714   0008DA                     l822:
+   715   0008DA  4A02               	infsnz	data@i^0,f,c
+   716   0008DC  2A03               	incf	(data@i+1)^0,f,c
+   717   0008DE  BE03               	btfsc	(data@i+1)^0,7,c
+   718   0008E0  EF7B  F004         	goto	u11
+   719   0008E4  5003               	movf	(data@i+1)^0,w,c
+   720   0008E6  E109               	bnz	u10
+   721   0008E8  0E65               	movlw	101
+   722   0008EA  5C02               	subwf	data@i^0,w,c
+   723   0008EC  A0D8               	btfss	status,0,c
+   724   0008EE  EF7B  F004         	goto	u11
+   725   0008F2  EF7D  F004         	goto	u10
+   726   0008F6                     u11:
+   727   0008F6  EF6D  F004         	goto	l822
+   728   0008FA                     u10:
+   729   0008FA                     
+   730                           ;MATRIXWITHOUTCLEAR.c: 160:     RC2=0;
+   731   0008FA  9482               	bcf	3970,2,c	;volatile
+   732   0008FC                     
+   733                           ;MATRIXWITHOUTCLEAR.c: 161:     for(int i=0;i<=5000;i++);
+   734   0008FC  0E00               	movlw	0
+   735   0008FE  6E05               	movwf	(data@i_75+1)^0,c
+   736   000900  0E00               	movlw	0
+   737   000902  6E04               	movwf	data@i_75^0,c
+   738   000904                     l832:
+   739   000904  4A04               	infsnz	data@i_75^0,f,c
+   740   000906  2A05               	incf	(data@i_75+1)^0,f,c
+   741   000908  BE05               	btfsc	(data@i_75+1)^0,7,c
+   742   00090A  EF90  F004         	goto	u21
+   743   00090E  0E89               	movlw	137
+   744   000910  5C04               	subwf	data@i_75^0,w,c
+   745   000912  0E13               	movlw	19
+   746   000914  5805               	subwfb	(data@i_75+1)^0,w,c
+   747   000916  A0D8               	btfss	status,0,c
+   748   000918  EF90  F004         	goto	u21
+   749   00091C  EF92  F004         	goto	u20
+   750   000920                     u21:
+   751   000920  EF82  F004         	goto	l832
+   752   000924                     u20:
+   753   000924  0012               	return		;funcret
+   754   000926                     __end_of_data:
+   755                           	callstack 0
+   756                           
+   757 ;; *************** function _cmd *****************
+   758 ;; Defined at:
+   759 ;;		line 143 in file "MATRIXWITHOUTCLEAR.c"
+   760 ;; Parameters:    Size  Location     Type
+   761 ;;  a               1    wreg     unsigned char 
+   762 ;; Auto vars:     Size  Location     Type
+   763 ;;  a               1    0[COMRAM] unsigned char 
+   764 ;;  i               2    3[COMRAM] int 
+   765 ;;  i               2    1[COMRAM] int 
+   766 ;; Return value:  Size  Location     Type
+   767 ;;                  1    wreg      void 
+   768 ;; Registers used:
+   769 ;;		wreg, status,2, status,0
+   770 ;; Tracked objects:
+   771 ;;		On entry : 0/0
+   772 ;;		On exit  : 0/0
+   773 ;;		Unchanged: 0/0
+   774 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   775 ;;      Params:         0       0       0       0       0       0       0
+   776 ;;      Locals:         5       0       0       0       0       0       0
+   777 ;;      Temps:          0       0       0       0       0       0       0
+   778 ;;      Totals:         5       0       0       0       0       0       0
+   779 ;;Total ram usage:        5 bytes
+   780 ;; Hardware stack levels used: 1
+   781 ;; This function calls:
+   782 ;;		Nothing
+   783 ;; This function is called by:
+   784 ;;		_main
+   785 ;; This function uses a non-reentrant model
+   786 ;;
+   787                           
+   788                           	psect	text3
+   789   000926                     __ptext3:
+   790                           	callstack 0
+   791   000926                     _cmd:
+   792                           	callstack 30
+   793                           
+   794                           ;incstack = 0
+   795                           ;cmd@a stored from wreg
+   796   000926  6E01               	movwf	cmd@a^0,c
+   797   000928                     
+   798                           ;MATRIXWITHOUTCLEAR.c: 143:     void cmd(unsigned char a );MATRIXWITHOUTCLEAR.c: 144: {;
+      +                          MATRIXWITHOUTCLEAR.c: 145:     RC0=0;
+   799   000928  9082               	bcf	3970,0,c	;volatile
+   800                           
+   801                           ;MATRIXWITHOUTCLEAR.c: 146:     RC1=0;
+   802   00092A  9282               	bcf	3970,1,c	;volatile
+   803   00092C                     
+   804                           ;MATRIXWITHOUTCLEAR.c: 147:     PORTD=a;
+   805   00092C  C001  FF83         	movff	cmd@a,3971	;volatile
+   806   000930                     
+   807                           ;MATRIXWITHOUTCLEAR.c: 148:     RC2=1;
+   808   000930  8482               	bsf	3970,2,c	;volatile
+   809   000932                     
+   810                           ;MATRIXWITHOUTCLEAR.c: 149:     for(int i=0;i<=100;i++);
+   811   000932  0E00               	movlw	0
+   812   000934  6E03               	movwf	(cmd@i+1)^0,c
+   813   000936  0E00               	movlw	0
+   814   000938  6E02               	movwf	cmd@i^0,c
+   815   00093A                     l848:
+   816   00093A  4A02               	infsnz	cmd@i^0,f,c
+   817   00093C  2A03               	incf	(cmd@i+1)^0,f,c
+   818   00093E  BE03               	btfsc	(cmd@i+1)^0,7,c
+   819   000940  EFAB  F004         	goto	u31
+   820   000944  5003               	movf	(cmd@i+1)^0,w,c
+   821   000946  E109               	bnz	u30
+   822   000948  0E65               	movlw	101
+   823   00094A  5C02               	subwf	cmd@i^0,w,c
+   824   00094C  A0D8               	btfss	status,0,c
+   825   00094E  EFAB  F004         	goto	u31
+   826   000952  EFAD  F004         	goto	u30
+   827   000956                     u31:
+   828   000956  EF9D  F004         	goto	l848
+   829   00095A                     u30:
+   830   00095A                     
+   831                           ;MATRIXWITHOUTCLEAR.c: 150:     RC2=0;
+   832   00095A  9482               	bcf	3970,2,c	;volatile
+   833   00095C                     
+   834                           ;MATRIXWITHOUTCLEAR.c: 151:     for(int i=0;i<=5000;i++);
+   835   00095C  0E00               	movlw	0
+   836   00095E  6E05               	movwf	(cmd@i_71+1)^0,c
+   837   000960  0E00               	movlw	0
+   838   000962  6E04               	movwf	cmd@i_71^0,c
+   839   000964                     l858:
+   840   000964  4A04               	infsnz	cmd@i_71^0,f,c
+   841   000966  2A05               	incf	(cmd@i_71+1)^0,f,c
+   842   000968  BE05               	btfsc	(cmd@i_71+1)^0,7,c
+   843   00096A  EFC0  F004         	goto	u41
+   844   00096E  0E89               	movlw	137
+   845   000970  5C04               	subwf	cmd@i_71^0,w,c
+   846   000972  0E13               	movlw	19
+   847   000974  5805               	subwfb	(cmd@i_71+1)^0,w,c
+   848   000976  A0D8               	btfss	status,0,c
+   849   000978  EFC0  F004         	goto	u41
+   850   00097C  EFC2  F004         	goto	u40
+   851   000980                     u41:
+   852   000980  EFB2  F004         	goto	l858
+   853   000984                     u40:
+   854   000984  0012               	return		;funcret
+   855   000986                     __end_of_cmd:
+   856                           	callstack 0
+   857                           
+   858                           	psect	rparam
+   859   000000                     tosu	equ	0xFFF
+   860                           tosh	equ	0xFFE
+   861                           tosl	equ	0xFFD
+   862                           stkptr	equ	0xFFC
+   863                           pclatu	equ	0xFFB
+   864                           pclath	equ	0xFFA
+   865                           pcl	equ	0xFF9
+   866                           tblptru	equ	0xFF8
+   867                           tblptrh	equ	0xFF7
+   868                           tblptrl	equ	0xFF6
+   869                           tablat	equ	0xFF5
+   870                           prodh	equ	0xFF4
+   871                           prodl	equ	0xFF3
+   872                           indf0	equ	0xFEF
+   873                           postinc0	equ	0xFEE
+   874                           postdec0	equ	0xFED
+   875                           preinc0	equ	0xFEC
+   876                           plusw0	equ	0xFEB
+   877                           fsr0h	equ	0xFEA
+   878                           fsr0l	equ	0xFE9
+   879                           wreg	equ	0xFE8
+   880                           indf1	equ	0xFE7
+   881                           postinc1	equ	0xFE6
+   882                           postdec1	equ	0xFE5
+   883                           preinc1	equ	0xFE4
+   884                           plusw1	equ	0xFE3
+   885                           fsr1h	equ	0xFE2
+   886                           fsr1l	equ	0xFE1
+   887                           bsr	equ	0xFE0
+   888                           indf2	equ	0xFDF
+   889                           postinc2	equ	0xFDE
+   890                           postdec2	equ	0xFDD
+   891                           preinc2	equ	0xFDC
+   892                           plusw2	equ	0xFDB
+   893                           fsr2h	equ	0xFDA
+   894                           fsr2l	equ	0xFD9
+   895                           status	equ	0xFD8
+
+Data Sizes:
+    Strings     32
+    Constant    0
+    Data        0
+    BSS         0
+    Persistent  0
+    Stack       0
+
+Auto Spaces:
+    Space          Size  Autos    Used
+    COMRAM           95      6       6
+    BANK0           160      0       0
+    BANK1           256      0       0
+    BANK2           256      0       0
+    BANK3           256      0       0
+    BANK4           256      0       0
+    BANK5           256      0       0
+
+Pointer List with Targets:
+
+    display@p	PTR const unsigned char  size(1) Largest target is 2
+		 -> STR_1(CODE[2]), STR_10(CODE[2]), STR_11(CODE[2]), STR_12(CODE[2]), 
+		 -> STR_13(CODE[2]), STR_14(CODE[2]), STR_15(CODE[2]), STR_16(CODE[2]), 
+		 -> STR_2(CODE[2]), STR_3(CODE[2]), STR_4(CODE[2]), STR_5(CODE[2]), 
+		 -> STR_6(CODE[2]), STR_7(CODE[2]), STR_8(CODE[2]), STR_9(CODE[2]), 
+
+
+Critical Paths under _main in COMRAM
+
+    _main->_display
+    _display->_data
+
+Critical Paths under _main in BANK0
+
+    None.
+
+Critical Paths under _main in BANK1
+
+    None.
+
+Critical Paths under _main in BANK2
+
+    None.
+
+Critical Paths under _main in BANK3
+
+    None.
+
+Critical Paths under _main in BANK4
+
+    None.
+
+Critical Paths under _main in BANK5
+
+    None.
+
+Call Graph Tables:
+
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (0) _main                                                 0     0      0    1411
+                                _cmd
+                            _display
+ ---------------------------------------------------------------------------------
+ (1) _display                                              1     0      1    1336
+                                              5 COMRAM     1     0      1
+                               _data
+ ---------------------------------------------------------------------------------
+ (2) _data                                                 5     5      0      75
+                                              0 COMRAM     5     5      0
+ ---------------------------------------------------------------------------------
+ (1) _cmd                                                  5     5      0      75
+                                              0 COMRAM     5     5      0
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 2
+ ---------------------------------------------------------------------------------
+
+ Call Graph Graphs:
+
+ _main (ROOT)
+   _cmd
+   _display
+     _data
+
+ Address spaces:
+Name               Size   Autos  Total    Cost      Usage
+BITCOMRAM           5F      0       0       0        0.0%
+EEDATA             100      0       0       0        0.0%
+NULL                 0      0       0       0        0.0%
+CODE                 0      0       0       0        0.0%
+COMRAM              5F      6       6       1        6.3%
+STACK                0      0       0       2        0.0%
+DATA                 0      0       0       3        0.0%
+BITBANK0            A0      0       0       4        0.0%
+BANK0               A0      0       0       5        0.0%
+BITBANK1           100      0       0       6        0.0%
+BANK1              100      0       0       7        0.0%
+BITBANK2           100      0       0       8        0.0%
+BANK2              100      0       0       9        0.0%
+BITBANK3           100      0       0      10        0.0%
+BANK3              100      0       0      11        0.0%
+BITBANK4           100      0       0      12        0.0%
+BANK4              100      0       0      13        0.0%
+BITBANK5           100      0       0      14        0.0%
+BANK5              100      0       0      15        0.0%
+BITBIGSFRh          3E      0       0      16        0.0%
+BITBIGSFRlh         2B      0       0      17        0.0%
+BITBIGSFRllh         F      0       0      18        0.0%
+BITBIGSFRlll       281      0       0      19        0.0%
+ABS                  0      0       0      20        0.0%
+BIGRAM             5FF      0       0      21        0.0%
+BIGSFR               0      0       0     200        0.0%
+BITSFR_3             0      0       0     200        0.0%
+SFR_3                0      0       0     200        0.0%
+BITSFR_2             0      0       0     200        0.0%
+SFR_2                0      0       0     200        0.0%
+BITSFR_1             0      0       0     200        0.0%
+SFR_1                0      0       0     200        0.0%
+BITSFR               0      0       0     200        0.0%
+SFR                  0      0       0     200        0.0%
+
+
+Microchip Technology PIC18 Macro Assembler V2.46 build 20240104201356 
+Symbol Table                                                                                   Fri Aug 09 09:21:46 2024
+
+                     l41 0692                       l42 0680                       l35 063E  
+                     l60 0732                       l52 06D0                       l36 066A  
+                     l61 0720                       l37 0658                       l46 06BA  
+                     l71 0770                       l55 070A                       l47 06A8  
+                     l80 07C0                       l56 06F8                       l65 075A  
+                     l90 0810                       l74 07AA                       l66 0748  
+                     l75 0798                       l84 07FA                       l93 084A  
+                     l85 07E8                       l94 0838                       l79 07D2  
+                     l98 0872                       l99 0860                       u10 08FA  
+                     u11 08F6                       u20 0924                       u21 0920  
+                     u30 095A                       u31 0956                       u40 0984  
+                     u41 0980                      l103 089A                      l104 0888  
+                    l121 0984                      l125 08FA                      l109 08B0  
+                    l118 095A                      l134 09B0                      l128 0924  
+                    l810 08C8                      l812 08CC                      l822 08DA  
+                    l814 08D0                      l840 0930                      l832 0904  
+                    l824 08DE                      l816 08D2                      l850 093E  
+                    l842 0932                      l834 0908                      l826 08FC  
+                    l922 0986                      l930 0622                      l860 0968  
+                    l852 095C                      l836 0928                      l924 098A  
+                    l940 0678                      l932 0632                      l838 092C  
+                    l926 0996                      l950 06F0                      l942 06A0  
+                    l934 0638                      l848 093A                      l928 0998  
+                    l960 0782                      l952 0718                      l944 06C8  
+                    l936 0642                      l858 0964                      l970 081E  
+                    l962 0790                      l954 0740                      l946 06DE  
+                    l938 0650                      l980 08A8                      l972 0822  
+                    l964 07B8                      l956 0768                      l948 06E2  
+                    l974 0830                      l966 07E0                      l958 077E  
+                    l976 0858                      l968 0808                      l978 0880  
+                    _RC0 7C10                      _RC1 7C11                      _RB4 7C0C  
+                    _RC2 7C12                      _RB5 7C0D                      _RB6 7C0E  
+                    _RB7 7C0F                      u400 0666                      u401 0662  
+                    u410 0678                      u411 0674                      u500 072E  
+                    u420 068E                      u501 072A                      u421 068A  
+                    u510 0740                      u430 06A0                      u511 073C  
+                    u431 069C                      u600 07F6                      u520 0756  
+                    u440 06B6                      u601 07F2                      u521 0752  
+                    u441 06B2                      u610 0808                      u530 0768  
+                    u450 06C8                      u611 0804                      u531 0764  
+                    u451 06C4                      u380 09B0                      u700 08BE  
+                    u620 081E                      u540 077E                      u460 06DE  
+                    u381 09AC                      u701 08BA                      u621 081A  
+                    u541 077A                      u461 06DA                      u630 0830  
+                    u550 0790                      u470 06F0                      u390 0650  
+                    u631 082C                      u551 078C                      u471 06EC  
+                    u391 064C                      u640 0846                      u560 07A6  
+                    u480 0706                      u641 0842                      u561 07A2  
+                    u481 0702                      u650 0858                      u570 07B8  
+                    u490 0718                      u651 0854                      u571 07B4  
+                    u491 0714                      u660 086E                      u580 07CE  
+                    u661 086A                      u581 07CA                      u670 0880  
+                    u590 07E0                      u671 087C                      u591 07DC  
+                    u680 0896                      u681 0892                      u690 08A8  
+                    u691 08A4                      _cmd 0926                     ?_cmd 0001  
+                   STR_1 0603                     STR_2 0605                     STR_3 0607  
+                   STR_4 0609                     STR_5 060B                     STR_6 060D  
+                   STR_7 060F                     STR_8 0611                     STR_9 0613  
+                   _data 08C6                     cmd@a 0001                     cmd@i 0002  
+                   _main 0622                     start 0000             ___param_bank 0000  
+                  ??_cmd 0001                    ?_data 0001                    ?_main 0001  
+                  STR_10 0615                    STR_11 0617                    STR_12 0619  
+                  STR_13 061B                    STR_14 061D                    STR_15 061F  
+                  STR_16 0601                    _PORTB 0F81                    _PORTD 0F83  
+                  _TRISB 0F93                    _TRISC 0F94                    _TRISD 0F95  
+        __end_of_display 09B2                    data@a 0001                    data@i 0002  
+                  tablat 0FF5                    status 0FD8          __initialization 09B2  
+           __end_of_data 0926             __end_of_main 08C6                   ??_data 0001  
+                 ??_main 0007            __activetblptr 0001                   _ADCON1 0FC1  
+                 isa$std 0001                ??_display 0007             __mediumconst 0000  
+                 tblptrh 0FF7                   tblptrl 0FF6                   tblptru 0FF8  
+             __accesstop 0060  __end_of__initialization 09B2            ___rparam_used 0001  
+         __pcstackCOMRAM 0001                  __Hparam 0000                  __Lparam 0000  
+           __psmallconst 0600                  __pcinit 09B2                  __ramtop 0600  
+                __ptext0 0622                  __ptext1 0986                  __ptext2 08C6  
+                __ptext3 0926                  cmd@i_71 0004                  _display 0986  
+   end_of_initialization 09B2      start_initialization 09B2              __end_of_cmd 0986  
+               ?_display 0006              __smallconst 0600                 __Hrparam 0000  
+               __Lrparam 0000             __Lsmallconst 0600                 data@i_75 0004  
+               isa$xinst 0000                 display@p 0006  
